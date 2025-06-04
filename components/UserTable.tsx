@@ -80,8 +80,8 @@ export default function UserTable({
 
     if (sortColumn) {
       filtered.sort((a, b) => {
-        let valA: any;
-        let valB: any;
+        let valA: number | string | null | undefined;
+        let valB: number | string | null | undefined;
 
         if (sortColumn === "index") {
           valA = users.indexOf(a);
@@ -197,7 +197,7 @@ export default function UserTable({
         </TableHead>
 
         <TableBody>
-          {sortedAndFilteredUsers.map((user, index) => (
+          {sortedAndFilteredUsers.map((user) => (
             <TableRow key={user.id} className="flex w-full">
               {headers.map((column, colIndex) => (
                 <TableCell

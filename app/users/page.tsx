@@ -6,7 +6,7 @@ import { UserColumnDefinition } from "@/types/TableTypes";
 import { UserProfile } from "@/types/userTypes";
 import { useQuery } from "@tanstack/react-query";
 
-export default function page() {
+export default function Page() {
   const fetchUsers = async (): Promise<UserProfile[]> => {
     const { data, error } = await supabase.from("users").select("*");
 

@@ -36,7 +36,7 @@ export default function UserProfileDetailModal({
     for (const key in submittedData) {
       const field = key as keyof UserProfile;
       if (field in initialUser && submittedData[field] !== initialUser[field]) {
-        // @ts-ignore - for optional fields
+        // @ts-expect-error - for optional fields
         updatedUser[field] = submittedData[field] ?? null;
       }
     }
@@ -54,8 +54,10 @@ export default function UserProfileDetailModal({
     if (!dateString) return "داده ای وجود ندارد";
     try {
       return new Date(dateString).toLocaleString();
-    } catch (e) {
-      return dateString;
+    } catch (err) {
+      throw new Error(
+        err instanceof Error ? error?.message : "Something went wrong",
+      );
     }
   };
 
@@ -130,7 +132,7 @@ export default function UserProfileDetailModal({
   }
 
   const {
-    data: fetchedUserData, //not going to be used
+    //    data: fetchedUserData, //not going to be used
     isLoading,
     isError,
     error,

@@ -68,9 +68,8 @@ export default function UserSearchPage() {
         setError(new Error("Invalid data format received from server."));
         setMessage("جست و جو ناموفق بود");
       }
-    } catch (err: any) {
+    } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
-      setMessage(`Search failed: ${err.message || String(err)}`);
     } finally {
       setLoading(false);
     }

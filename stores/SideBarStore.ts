@@ -22,8 +22,8 @@ export const useSidebarStore = create<SidebarStore>()(
     }),
     {
       name: "sidebar-state",
-      storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ isOpen: state.isOpen }),
-    }
-  )
+      storage: createJSONStorage(() => localStorage), //keep the user preference in the local storage
+      partialize: (state) => ({ isOpen: state.isOpen }), //keep only the state in the local storage
+    },
+  ),
 );

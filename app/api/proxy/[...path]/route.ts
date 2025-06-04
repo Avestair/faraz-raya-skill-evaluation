@@ -2,32 +2,20 @@ import { supabase } from "@/db/client";
 import { NextRequest, NextResponse } from "next/server";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_AUTH_KEY = process.env.SUPABASE_AUTH_KEY;
+// const SUPABASE_AUTH_KEY = process.env.SUPABASE_AUTH_KEY;
 
 if (!SUPABASE_URL) {
   throw new Error("SUPABASE_URL is not defined in environment variables.");
 }
 
-function getApiUrl(pathSegments: string[]): string {
-  const path = pathSegments.join("/");
-  return `${SUPABASE_AUTH_KEY}/rest/v1/${path}`;
-}
-
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } },
+  { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const awaitedParams = await params;
-    const tableName = awaitedParams.path[0];
+    const tableName = (await params).path[0];
 
-    const { searchParams } = new URL(request.url);
-    let query = supabase.from(tableName).select("*");
-
-    // filtering result
-    if (searchParams.has("email")) {
-      query = query.eq("email", searchParams.get("email"));
-    }
+    const query = supabase.from(tableName).select("*");
 
     const { data, error } = await query;
 
@@ -49,18 +37,17 @@ export async function GET(
 //POST Method
 export async function POST(
   request: NextRequest,
-  { params }: { params: { path: string[] } },
+  { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const awaitedParams = await params;
-    const tableName = awaitedParams.path[0];
+    const tableName = (await params).path[0];
     const url = new URL(request.url);
     const searchParams = url.searchParams;
     const fullname = searchParams.get("full_name") || "";
 
     // console.log("Username from URL params:", fullname);
 
-    let query = supabase
+    const query = supabase
       .from(tableName)
       .select("*")
       .ilike("full_name", fullname);
@@ -69,7 +56,7 @@ export async function POST(
 
     const { data, error } = await query;
 
-    console.log("data", data);
+    // console.log("data", data);
 
     if (error) {
       console.error("supabase error", error);
@@ -89,18 +76,17 @@ export async function POST(
 //PUT Method
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { path: string[] } },
+  { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const awaitedParams = await params;
-    const tableName = awaitedParams.path[0];
-    console.log(tableName);
+    const tableName = (await params).path[0];
+    // console.log(tableName);
 
     const requestBody = await request.json();
 
     console.log("req body", requestBody);
 
-    let query = supabase
+    const query = supabase
       .from(tableName)
       .update(requestBody)
       .eq("username", requestBody.username)
@@ -135,17 +121,16 @@ export async function PUT(
 //Delete Method
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { path: string[] } },
+  { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const awaitedParams = await params;
-    const tableName = awaitedParams.path[0];
-    console.log(tableName);
+    const tableName = (await params).path[0];
+    // console.log(tableName);
 
     const { searchParams } = new URL(request.url);
     const usernameToDelete = searchParams.get("username");
 
-    console.log(usernameToDelete);
+    // console.log(usernameToDelete);
 
     if (!usernameToDelete) {
       return NextResponse.json(
@@ -154,7 +139,7 @@ export async function DELETE(
       );
     }
 
-    let query = supabase
+    const query = supabase
       .from(tableName)
       .delete()
       .eq("username", usernameToDelete);

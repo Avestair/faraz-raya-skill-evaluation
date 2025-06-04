@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 const Vazir = Vazirmatn({
   variable: "--font-Vazirmatn",
+  subsets: ["arabic"],
 });
 
 export const metadata: Metadata = {
