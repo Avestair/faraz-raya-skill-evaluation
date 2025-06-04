@@ -9,14 +9,14 @@ export default function DashBoard() {
       <div className="flex gap-5">
         <Link href={"/users"}>
           <Card bodyClassName="grid gap-4 w-[200px]">
-            <PiUserListDuotone className="size-6 text-gray-400" />
+            <PiUserListDuotone className="size-6" />
             <p className="justify-self-end">کاربران</p>
           </Card>
         </Link>
 
         <Link href={"/searchuser"}>
           <Card bodyClassName="grid gap-4 w-[200px]">
-            <PiUserDuotone className="size-6 text-gray-400" />
+            <PiUserDuotone className="size-6" />
             <p className="justify-self-end">جست و جوی کاربر</p>
           </Card>
         </Link>

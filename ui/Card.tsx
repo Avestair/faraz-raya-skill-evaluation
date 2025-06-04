@@ -12,14 +12,14 @@ export default function Card({
   containerClassName,
 }: CardProps) {
   const containerBaseClass =
-    "grid gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-xs transition-all duration-500 hover:bg-gray-50";
+    "grid gap-3 rounded-lg border border-gray-200 p-4 shadow-xs transition-all duration-500";
   const containrMergedClassName = twMerge(
     containerBaseClass,
     containerClassName,
   );
 
   const bodyBaseClassName = "";
-  const bodyMergedClassName = twMerge(bodyBaseClassName, bodyBaseClassName);
+  const bodyMergedClassName = twMerge(bodyBaseClassName, bodyClassName);
   return (
     <div className={containrMergedClassName}>
       <div className={bodyMergedClassName}>{children}</div>

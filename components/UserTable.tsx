@@ -146,7 +146,7 @@ export default function UserTable({
   }
 
   if (!users) {
-    return <div className="py-8 text-center">No users data available.</div>;
+    return <div className="py-8 text-center">هیچ کاربری بیدا نشد.</div>;
   }
 
   return (
@@ -162,7 +162,7 @@ export default function UserTable({
           id="jobTitleFilter"
           value={jobTitleFilter}
           onChange={(e) => setJobTitleFilter(e.target.value)}
-          className="rounded-md border border-gray-300 bg-white py-2 text-gray-900 outline-none focus:ring focus:ring-black dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:ring-white"
+          className="rounded-md border border-gray-300 bg-white py-2 text-gray-900 outline-none focus:ring focus:ring-black dark:border-gray-600 dark:bg-stone-700 dark:text-white dark:focus:ring-white"
         >
           {uniqueJobTitles.map((title) => (
             <option key={title} value={title}>

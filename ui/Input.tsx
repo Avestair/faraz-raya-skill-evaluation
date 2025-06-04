@@ -14,7 +14,7 @@ export default function Input({
   ...props
 }: InputProps) {
   const baseClassName =
-    "focus:border-black focus:dark:border-white rounded-sm border border-gray-200 p-2 text-gray-800 transition-all duration-300 outline-none placeholder:text-sm placeholder:text-gray-500";
+    "focus:border-black focus:dark:border-white rounded-sm border border-gray-200 p-2 text-gray-800 dark:text-gray-300 transition-all duration-300 outline-none placeholder:text-sm placeholder:text-gray-500";
   const mergedClassName = twMerge(baseClassName, className);
   return (
     <input

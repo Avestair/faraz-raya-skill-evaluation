@@ -10,7 +10,7 @@ import {
   PiUserListDuotone,
 } from "react-icons/pi";
 
-export function SideBar() {
+export default function SideBar() {
   const userSubMenu = [
     { title: "کاربران", href: "/users" },
     { title: "کاربران", href: "/users" },
@@ -26,10 +26,10 @@ export function SideBar() {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-          className="fixed top-0 right-0 z-30 flex h-[100vh] w-[20%] min-w-[280px] flex-col overflow-y-auto border-r border-gray-50 bg-gray-50 text-gray-700 shadow-lg md:static md:left-0 md:w-auto md:min-w-[280px] md:border-t-0 md:border-r md:border-l-0 md:shadow-none lg:z-0 dark:bg-stone-900 dark:text-white"
+          className="fixed top-0 right-0 z-30 flex h-[100vh] w-[20%] min-w-[280px] flex-col overflow-y-auto border-l border-gray-400 bg-gray-100 text-gray-700 shadow-lg md:static md:left-0 md:w-auto md:min-w-[280px] md:border-t-0 md:border-r md:border-l-0 md:shadow-none lg:z-0 dark:border-l dark:bg-stone-900 dark:text-gray-100"
         >
           {/* Sidebar Header Section */}
-          <div className="relative flex items-center justify-between border-b border-gray-200 p-4 dark:border-gray-700">
+          <div className="relative flex items-center justify-between border-b border-gray-400 p-4">
             <div className="flex w-full items-center justify-between">
               <span className="text-xl font-bold">Hamed Iravni</span>
               <PiSidebarSimpleDuotone
@@ -59,5 +59,3 @@ export function SideBar() {
     </AnimatePresence>
   );
 }
-
-export default React.memo(SideBar);

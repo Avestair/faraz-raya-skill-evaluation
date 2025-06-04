@@ -25,12 +25,12 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`flex h-screen w-full justify-between ${Vazir.variable} antialiased`}
+        className={`flex h-screen w-full justify-between bg-gray-100 dark:bg-stone-900 ${Vazir.variable} antialiased`}
       >
         <TQueryProvider>
           <SidebarProvider>
             <SideBar />
-            <main className="w-full bg-white px-3 text-gray-700 dark:bg-stone-900 dark:text-white">
+            <main className="my-4 w-full bg-white px-3 text-gray-700 dark:bg-stone-950 dark:text-gray-100">
               <Header />
               {children}
               <Toaster position="top-left" />

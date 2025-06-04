@@ -30,7 +30,7 @@ export default function SubMenuElement({
           isActive ? "bg-stone-900" : "bg-gray-300"
         }`}
       ></span>
-      <span className="mt-1.5 text-sm">{title}</span>
+      <span className="mt-1.5 text-sm text-gray-600">{title}</span>
     </Link>
   );
 }

@@ -135,12 +135,12 @@ export default function UserSearchPage() {
         onSubmit={(e) => e.preventDefault()}
         className="mx-auto flex flex-col gap-4 px-8 md:flex-row"
       >
-        <div className="flex gap-2 rounded-md border border-gray-300 dark:border-white">
+        <div className="flex gap-2 rounded-md border border-gray-300 dark:border-white dark:bg-stone-900">
           <input
             type="text"
             name="full_name"
             placeholder="نام و نام خانوادگی کاربر مورد نظر را وارد کنید..."
-            className="w-[95%] border-0 p-2 text-gray-700 outline-none placeholder:text-sm"
+            className="w-[95%] border-0 p-2 text-gray-700 outline-none placeholder:text-sm dark:text-gray-200"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

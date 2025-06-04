@@ -51,12 +51,12 @@ export default function Modal({
       onClick={onClose}
     >
       <div
-        className={`relative m-4 grid w-full max-w-lg gap-4 rounded-lg bg-white p-6 shadow-xl ${mainContainerClassName}`}
+        className={`relative m-4 grid w-full max-w-lg gap-4 rounded-lg bg-white p-6 shadow-xl dark:bg-stone-950 ${mainContainerClassName}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 left-3 cursor-pointer text-2xl text-gray-500 transition-all duration-300 hover:text-gray-800"
+          className="absolute top-3 left-3 cursor-pointer text-2xl text-gray-500 transition-all duration-300 hover:text-gray-800 dark:text-gray-200"
           aria-label="Close modal"
         >
           <PiX className="size-6" />
@@ -71,8 +71,14 @@ export default function Modal({
 Modal.Header = function ModalHeader({ title, description }: ModalHeaderProps) {
   return (
     <div className="grid gap-2 border-b pb-4">
-      <p className="text-2xl font-bold text-gray-800">{title}</p>
-      {description && <p className="text-sm text-gray-500">{description}</p>}
+      <p className="text-2xl font-bold text-gray-800 dark:text-stone-200">
+        {title}
+      </p>
+      {description && (
+        <p className="text-sm text-gray-500 dark:text-stone-300">
+          {description}
+        </p>
+      )}
     </div>
   );
 };

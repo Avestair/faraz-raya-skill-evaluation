@@ -59,7 +59,7 @@ export function TableHeader({
 }
 
 export function TableRow({ children, className }: TableRowProps) {
-  const baseClassName = `text-sm lg:text-base border-b border-gray-200 even:bg-gray-100 last:border-0`;
+  const baseClassName = `text-sm lg:text-base border-b border-gray-200 even:bg-gray-100 dark:even:bg-stone-950 dark:text-gray-200 last:border-0`;
   const mergedClassName = twMerge(baseClassName, className);
   return <tr className={mergedClassName}>{children}</tr>;
 }
