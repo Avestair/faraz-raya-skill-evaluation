@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-interface SidebarState {
+type SidebarState = {
   isOpen: boolean;
-}
+};
 
-interface SidebarActions {
+type SidebarActions = {
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
-}
+};
 
 type SidebarStore = SidebarState & SidebarActions;
 

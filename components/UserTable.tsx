@@ -35,6 +35,7 @@ export default function UserTable({
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const [jobTitleFilter, setJobTitleFilter] = useState<string>("all");
 
+  // handle Modal display function that belongs to the modal
   function toggleModal() {
     setShowModal(!showModal);
     if (showModal) {
@@ -42,6 +43,7 @@ export default function UserTable({
     }
   }
 
+  //fucntion for handling modal to get the user data and then set it to a state and pass it to the modal
   function handleOnClick(user: UserProfile) {
     setShowModal(true);
     setSelectedUser(user);
@@ -57,6 +59,7 @@ export default function UserTable({
     }
   };
 
+  // sort user array data based on the job title
   const uniqueJobTitles = useMemo(() => {
     if (!users) return [];
     const titles = new Set<string>();
@@ -68,6 +71,7 @@ export default function UserTable({
     return ["all", ...Array.from(titles).sort()];
   }, [users]);
 
+  //sort by given seacrh type
   const sortedAndFilteredUsers = useMemo(() => {
     if (!users) return [];
 
@@ -105,6 +109,7 @@ export default function UserTable({
     return filtered;
   }, [users, jobTitleFilter, sortColumn, sortDirection]);
 
+  //users table headers
   const userTableHeaders: UserColumnDefinition[] = [
     { headerName: "ردیف", dataKey: "index", className: "", sortable: true },
     { headerName: "نام کامل", dataKey: "full_name", className: "" },
@@ -174,6 +179,7 @@ export default function UserTable({
       <Table className="min-w-full">
         <TableHead>
           <TableRow className="flex w-full">
+            {/* map over the headers */}
             {headers.map((header, index) => (
               <TableHeader
                 key={index}
@@ -182,10 +188,12 @@ export default function UserTable({
                   header.sortable
                     ? () => handleSort(header.dataKey as string)
                     : undefined
+                  //  pass the onclick function if the header is sortable
                 }
               >
                 <div className="flex items-center gap-1">
                   {header.headerName}
+                  {/* display a arrow icon based on the sort state */}
                   {header.sortable && sortColumn === header.dataKey && (
                     <span>{sortDirection === "asc" ? " ▲" : " ▼"}</span>
                   )}
@@ -230,7 +238,9 @@ export default function UserTable({
         </TableBody>
       </Table>
 
+      {/* add motion animation for the modal */}
       <AnimatePresence>
+        {/* user detial modal */}
         {showModal && selectedUser && (
           <UserProfileDetailModal user={selectedUser} onClose={toggleModal} />
         )}

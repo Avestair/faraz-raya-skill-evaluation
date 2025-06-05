@@ -13,9 +13,9 @@ export async function GET(
   { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const tableName = (await params).path[0];
+    const tableName = (await params).path[0]; // get the table name
 
-    const query = supabase.from(tableName).select("*");
+    const query = supabase.from(tableName).select("*"); // get all users's query
 
     const { data, error } = await query;
 
@@ -42,19 +42,19 @@ export async function POST(
   try {
     const tableName = (await params).path[0];
     const url = new URL(request.url);
-    const searchParams = url.searchParams;
-    const fullname = searchParams.get("full_name") || "";
+    const searchParams = url.searchParams; //get url params
+    const fullname = searchParams.get("full_name") || ""; // get the user's full name from the url params
 
     // console.log("Username from URL params:", fullname);
 
     const query = supabase
       .from(tableName)
       .select("*")
-      .ilike("full_name", fullname);
+      .ilike("full_name", fullname); // query for gettign all the users
 
     // console.log(tableName);
 
-    const { data, error } = await query;
+    const { data, error } = await query; //query data
 
     // console.log("data", data);
 
@@ -79,17 +79,17 @@ export async function PUT(
   { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const tableName = (await params).path[0];
+    const tableName = (await params).path[0]; //get the table name
     // console.log(tableName);
 
-    const requestBody = await request.json();
+    const requestBody = await request.json(); //get the request table
 
-    console.log("req body", requestBody);
+    // console.log("req body", requestBody);
 
     const query = supabase
       .from(tableName)
-      .update(requestBody)
-      .eq("username", requestBody.username)
+      .update(requestBody) //replace teh user data with the new user data
+      .eq("username", requestBody.username) // find the exact user data
       .select();
 
     const { data, error } = await query;
@@ -124,11 +124,11 @@ export async function DELETE(
   { params }: { params: Promise<{ path: string }> },
 ) {
   try {
-    const tableName = (await params).path[0];
+    const tableName = (await params).path[0]; //get the table name
     // console.log(tableName);
 
-    const { searchParams } = new URL(request.url);
-    const usernameToDelete = searchParams.get("username");
+    const { searchParams } = new URL(request.url); // get the url params
+    const usernameToDelete = searchParams.get("username"); // get the username from the params
 
     // console.log(usernameToDelete);
 
@@ -141,8 +141,8 @@ export async function DELETE(
 
     const query = supabase
       .from(tableName)
-      .delete()
-      .eq("username", usernameToDelete);
+      .delete() // delete that row
+      .eq("username", usernameToDelete); // find the exact user row
 
     const { data, error } = await query;
     // console.log(data);

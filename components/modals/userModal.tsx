@@ -7,10 +7,10 @@ import { useForm } from "react-hook-form";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-interface UserProfileDetailModalProps {
+type UserProfileDetailModalProps = {
   user: UserProfile;
   onClose: () => void;
-}
+};
 
 export default function UserProfileDetailModal({
   user,

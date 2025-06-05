@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import UserTable from "@/components/UserTable";
 import { supabase } from "@/db/client";
 import { UserColumnDefinition } from "@/types/TableTypes";
@@ -7,6 +8,7 @@ import { UserProfile } from "@/types/userTypes";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Page() {
+  // Function to fetch users from Supabase
   const fetchUsers = async (): Promise<UserProfile[]> => {
     const { data, error } = await supabase.from("users").select("*");
 
@@ -26,6 +28,7 @@ export default function Page() {
     queryFn: fetchUsers,
   });
 
+  // Defines the table headers and their properties (e.g., responsiveness, sortability)
   const userTableHeaders: UserColumnDefinition[] = [
     { headerName: "ردیف", dataKey: "index", className: "" },
     { headerName: "نام کامل", dataKey: "full_name", className: "" },
@@ -58,6 +61,7 @@ export default function Page() {
       <div className="flex w-full justify-between">
         <h1 className="text-lg font-semibold md:text-2xl">لیست کاربران</h1>
       </div>
+      {/* Renders the UserTable component, passing data and states from useQuery */}
       <UserTable
         isError={isError}
         isLoading={isLoading}
