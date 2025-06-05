@@ -190,12 +190,12 @@ export default function UserSearchPage() {
         )
       )}
 
-      {searchResults !== null &&
+      {/* {searchResults !== null &&
         searchResults.length === 0 &&
         debouncedSearchTerm.trim() !== "" &&
         !queryLoading && (
           <p className="mt-4 text-center text-gray-500">هیچ کاربری یافت نشد</p>
-        )}
+        )} */}
     </div>
   );
 }
