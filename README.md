@@ -1,5 +1,26 @@
 # Project Documentation
 
+
+
+## Techonlogies Used In This Project
+
+### Next Js V15.3
+
+### React V19
+
+### Supabase V2.49
+
+### React Query V5.79
+
+### Zustand V5.0.5
+
+### TypeScript V5
+
+### TailwindCss V4
+
+
+
+
 ## 🗄️ Database Schema
 
 This project relies on a PostgreSQL database (typically managed via Supabase) with a primary users table to store user profile information.
