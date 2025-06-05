@@ -15,7 +15,6 @@ import { AnimatePresence } from "motion/react";
 import { formatDate } from "@/utils/utils";
 import { UserColumnDefinition, UserTableProps } from "@/types/TableTypes";
 
-// Assuming truncateString is defined globally or imported
 function truncateString(text: string, maxLength: number): string {
   if (!text || text.length <= maxLength) {
     return text;

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export interface UserProfile {
+export type UserProfile = {
   id?: string;
   created_at: string;
   email: string;
@@ -11,9 +11,9 @@ export interface UserProfile {
   department?: string | null;
   bio?: string | null;
   last_sign_in_at?: string | null;
-}
+};
 
-export interface NewUser {
+export type NewUser = {
   id: string;
   created_at: string;
   email: string;
@@ -24,9 +24,9 @@ export interface NewUser {
   company: string | null;
   department?: string | null;
   bio?: string | null;
-}
+};
 
-export interface UpdateUser {
+export type UpdateUser = {
   email?: string;
   password_hash?: string;
   username: string;
@@ -36,7 +36,7 @@ export interface UpdateUser {
   department?: string | null;
   bio?: string | null;
   last_sign_in_at?: string | null;
-}
+};
 
 export const userSchema = z.object({
   id: z.string(),

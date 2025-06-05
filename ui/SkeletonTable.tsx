@@ -8,13 +8,13 @@ import {
   TableRow,
 } from "@/ui/Table";
 
-interface UserTableSkeletonProps {
+type UserTableSkeletonProps = {
   headers: {
     headerName: string;
     className?: string;
   }[];
   rowCount?: number;
-}
+};
 
 export default function SkeletonTable({
   headers,

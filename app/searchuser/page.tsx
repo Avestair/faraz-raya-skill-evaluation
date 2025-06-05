@@ -22,8 +22,11 @@ export default function UserSearchPage() {
   );
 
   useEffect(() => {
+    console.log(fetchedUsers);
+
     const handler = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
+      console.log("devounced search term", debouncedSearchTerm);
     }, 500);
 
     return () => {
@@ -37,7 +40,7 @@ export default function UserSearchPage() {
     isError: queryIsError,
     error: queryError,
   } = useQuery<UserProfile[], Error>({
-    queryKey: ["usersSearch"],
+    queryKey: ["usersSearch", debouncedSearchTerm], //the fetch trigegrs the debouncedSearchTerm changes
     queryFn: async (): Promise<UserProfile[]> => {
       if (!debouncedSearchTerm.trim()) {
         return [];
@@ -51,6 +54,8 @@ export default function UserSearchPage() {
           },
         },
       );
+
+      // console.log("response", response);
 
       if (!response.ok) {
         const errorData = await response
@@ -153,7 +158,11 @@ export default function UserSearchPage() {
           />
           <PiMagnifyingGlassDuotone className="mt-1.5 ml-2 size-6 text-gray-400" />
         </div>
-        <Button type="submit" disabled={queryLoading}>
+        <Button
+          type="submit"
+          disabled={queryLoading}
+          onClick={() => setDebouncedSearchTerm(searchTerm)}
+        >
           {queryLoading ? "در حال جست و جو" : "جست و جو"}
         </Button>
       </form>

@@ -5,12 +5,12 @@ export type SubMenuItem = {
   onClick?: () => void;
 };
 
-export interface SidebarContextType {
+export type SidebarContextType = {
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
   openSidebar: () => void;
   closeSidebar: () => void;
-}
+};
 
 export type SideBarElementProps = {
   title: string;
